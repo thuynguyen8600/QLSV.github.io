@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý thông tin sinh viên</title>
+</head>
+<body>
+      
+<form action="" method="POST" onsubmit="return validate()">
+    <table border="1" cellpadding="10">
+        <tr>
+            <td>Mã sinh viên: </td>
+            <td>
+                <input type="text" id="masv" name="masv" value=""/>
+            </td>
+        </tr>
+        <tr>
+            <td>Tên sinh viên: </td>
+            <td>
+                <input type="text" id="tensv" name="tensv" value=""/>
+            </td>
+        </tr>
+        <tr>
+            <td>Địa chỉ liên lạc: </td>
+            <td>
+                <input type="text" id="address" name="address" value=""/>
+            </td>
+        </tr>
+        <tr>
+            <td>Số điện thoại: </td>
+            <td>
+                <input type="text" id="phone" name="phone" value=""/>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit" class="submit">Lưu</button>
+            </td>
+        </tr>
+    </table>
+    </form>
+        <script language="javascript">
+        function msv(arr){
+                    let a = (arr.slice(0,4));
+                    let b = (arr.slice(4,arr.length))*1;
+                    if((a=='20IT')&&(Number.isInteger(b)))
+                    {
+                          if((b>99) && (b<1000)){
+                          return true;
+                          }
+                           return false;
+                    }
+                    else   return false;                         
+            }
+            function phone(ph){
+                    let p =ph*1;
+                    if (Number.isInteger(p) &&(p>99999) && (p<10000000000)){ 
+                        return true;                 
+                    }
+                    else return false;
+                }
+        function validate() {
+            let m = document.getElementById("masv").value;
+            let n = document.getElementById("tensv").value;
+            let d = document.getElementById("address").value;
+            let p = document.getElementById("phone").value;
+            if (msv(m)==false){
+                alert ( 'Mã sinh viên không hợp lệ, hãy nhập lại mã sinh viên!');
+                return false;
+            }
+            if(n== "") {
+            alert("Tên không được để trống, vui lòng nhập tên!");
+            return false;
+            }
+            if(d == "") {
+            alert("Địa chỉ không được để trống, vui lòng nhập địa chỉ!");
+            return false;
+            }
+            if(phone(p)== false) {
+            alert("Số điện thoại không hợp lệ, vui lòng nhập lại!");
+            return false;
+            }       
+            alert("Lưu thông tin thành công") ;     
+            return true;
+        }
+           
+        </script>
+</body>
+</html>
